@@ -1,0 +1,18 @@
+[
+    {
+        "id": "ConvertchPackage",
+        "caption": "Convert Cht to Chs",
+        "children": [
+            {
+                "caption": "繁轉簡",
+                "command": "translate",
+                "args": {"trans_type": 0}
+            },
+            {
+                "caption": "簡轉繁",
+                "command": "translate",
+                "args": {"trans_type": 1}
+            }
+        ]
+    }
+]
