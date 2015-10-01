@@ -8,30 +8,47 @@ CONVERT_CHT_STRING = u"錒皚藹礙愛噯嬡璦曖靄諳銨鵪骯襖奧媼驁鰲
 
 
 class TranslateCommand(sublime_plugin.TextCommand):
-    def run(self, edit, **trans_type):
-        ttype = trans_type['trans_type']
 
-        if ttype == None:
-            return False
+    def translate(self, edit, type, content, startPos, endPos):
+        if type == 0:
+            self.translateT2S(edit, content, startPos, endPos)
+        elif type == 1:
+            self.translateS2T(edit, content, startPos, endPos)
 
-        elif ttype == 0:
-            ContentText = self.view.substr(sublime.Region(0, self.view.size())).encode('utf8')
-            ContentSize = len(self.view)
-
-            for indexPos in range(0, ContentSize):
-                TmpChar = str(ContentText.decode('utf8')[indexPos:indexPos+1].encode('utf8'))
+    def translateT2S(self, edit, content, startPos, endPos):
+        for indexPos in range(startPos, endPos):
+                TmpChar = str(content.decode('utf8')[indexPos:indexPos+1].encode('utf8'))
                 changePos = unicode(CONVERT_CHT_STRING, encoding='utf8').find(unicode(TmpChar, encoding='utf8'))
                 if(changePos > -1):
                     word = CONVERT_CHS_STRING.decode('utf8')[changePos:changePos+1].encode('utf8')
                     self.view.replace(edit, sublime.Region(indexPos, indexPos+1), word.decode('utf8'))
 
-        elif ttype == 1:
-            ContentText = self.view.substr(sublime.Region(0, self.view.size())).encode('utf8')
-            ContentSize = len(self.view)
-            for indexPos in range(0, ContentSize):
-                # view.sel().add(sublime.Region(indexPos))
-                TmpChar = str(ContentText.decode('utf8')[indexPos:indexPos+1].encode('utf8'))
+        return False
+
+    def translateS2T(self, edit, content, startPos, endPos):
+        for indexPos in range(startPos, endPos):
+                TmpChar = str(content.decode('utf8')[indexPos:indexPos+1].encode('utf8'))
                 changePos = unicode(CONVERT_CHS_STRING, encoding='utf8').find(unicode(TmpChar, encoding='utf8'))
                 if(changePos > -1):
                     word = CONVERT_CHT_STRING.decode('utf8')[changePos:changePos+1].encode('utf8')
                     self.view.replace(edit, sublime.Region(indexPos, indexPos+1), word.decode('utf8'))
+        return False
+
+    def run(self, edit, **trans_type):
+        # 轉換類型
+        ttype = trans_type['trans_type']
+        # 是否只處理選取
+        selected = trans_type['select']
+
+        ContentText = self.view.substr(sublime.Region(0, self.view.size())).encode('utf8')
+
+        if selected == True:
+            selectedItem = self.view.sel()
+            selectedLength = len(selectedItem)
+            for i in range(0, selectedLength):
+                self.translate(edit, ttype, ContentText, selectedItem[i].begin(), selectedItem[i].end())
+
+            self.view.sel().clear()
+        else:
+            ContentSize = len(self.view)
+            self.translate(edit, ttype, ContentText, 0, ContentSize)
