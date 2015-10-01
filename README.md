@@ -6,11 +6,13 @@ Please kindly give me some feedback if any issue, thank you.
 Right click on text section, and find 'Convert Chinese'
 then choose what you want to translate.
 
-* **繁轉簡**
+![Plugin screenshot](http://kerash.tw/github/ConvertChineseScreenshot.png)
+
+* **繁轉簡（全文）**
 
     我是繁體字 -> 我是繁体字
 
-* **簡轉繁**
+* **簡轉繁（全文）**
 
     我是繁体字 -> 我是繁體字
 
