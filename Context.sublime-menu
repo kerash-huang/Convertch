@@ -1,7 +1,7 @@
 [
     {
         "id": "ConvertchPackage",
-        "caption": "Convert Cht to Chs",
+        "caption": "Convert Chinese",
         "children": [
             {
                 "caption": "繁轉簡",
