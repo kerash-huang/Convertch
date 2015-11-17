@@ -4,21 +4,25 @@
         "caption": "Convert Chinese",
         "children": [
             {
+                "id": "allText",
                 "caption": "繁轉簡（全文）",
                 "command": "translate",
                 "args": {"trans_type": 0, "select": false}
             },
             {
+                "id": "selectText",
                 "caption": "繁轉簡（選取）",
                 "command": "translate",
                 "args": {"trans_type": 0, "select": true}
             },
             {
+                "id": "allText",
                 "caption": "簡轉繁（全文）",
                 "command": "translate",
                 "args": {"trans_type": 1, "select": false}
             },
             {
+                "id": "selectText",
                 "caption": "簡轉繁（選取）",
                 "command": "translate",
                 "args": {"trans_type": 1, "select": true}
