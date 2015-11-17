@@ -1,0 +1,22 @@
+[
+    {
+        "keys":["ctrl+alt+1"],
+        "command":"translate",
+        "args": {"trans_type": 0, "select": false}
+    },
+    {
+        "keys":["ctrl+alt+2"],
+        "command":"translate",
+        "args": {"trans_type": 0, "select": true}
+    },
+    {
+        "keys":["ctrl+alt+3"],
+        "command":"translate",
+        "args": {"trans_type": 1, "select": false}
+    },
+    {
+        "keys":["ctrl+alt+4"],
+        "command":"translate",
+        "args": {"trans_type": 1, "select": true}
+    }
+]
