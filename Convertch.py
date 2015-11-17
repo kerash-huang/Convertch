@@ -42,7 +42,7 @@ class TranslateCommand(sublime_plugin.TextCommand):
 
         ContentText = self.view.substr(sublime.Region(0, self.view.size())).encode('utf8')
 
-        if selected == True:
+        if selected is True:
             selectedItem = self.view.sel()
             selectedLength = len(selectedItem)
             for i in range(0, selectedLength):
